@@ -9,10 +9,13 @@ for submit your work you should follow this instructer:
 
 you can upload this folder or make it in github.
 ![create folder](https://github.com/alisharifi2000/CS-SBU-MachineLearning-BSc-2022/blob/main/assets/images/create_folder.png)
+![make folder](https://github.com/alisharifi2000/CS-SBU-MachineLearning-BSc-2022/blob/main/assets/images/make_folder.png)
 
 5. make branch with your student-id name 
-6. pull request for merging your branch to main branch.
+![create branch](https://github.com/alisharifi2000/CS-SBU-MachineLearning-BSc-2022/blob/main/assets/images/create_branch.png)
 
+7. pull request for merging your branch to main branch.
+![pull request](https://github.com/alisharifi2000/CS-SBU-MachineLearning-BSc-2022/blob/main/assets/images/pull_request.png)
 
 ## Attention:
 1. all request is merged , one day after each project deadline.
