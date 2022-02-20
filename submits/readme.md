@@ -1,5 +1,9 @@
 for submit your work you should follow this instructer:
 
+## submit flowchart:
+![submit flow](https://github.com/alisharifi2000/CS-SBU-MachineLearning-BSc-2022/blob/main/assets/images/mermaid-diagram-20220220115738.png)
+
+
 ## Instruction:
 
 1. fork the course repository in github with this [url](https://github.com/alisharifi2000/CS-SBU-DataMining-MSc-2022)
