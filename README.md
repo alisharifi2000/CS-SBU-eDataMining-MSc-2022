@@ -1,2 +1,2 @@
-# CS-SBU-MachineLearning-BSc-2022
-Machine Learning Course of Computer Science Faculty of Shahid Beheshti University. Winter 2022
+# CS-SBU-eDataMining-MSc-2022
+Data Mining e-Course of Computer Science Faculty of Shahid Beheshti University. Winter 2022

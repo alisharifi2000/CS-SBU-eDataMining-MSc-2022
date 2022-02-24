@@ -1,18 +1,25 @@
 for submit your work you should follow this instructer:
 
+## submit flowchart:
+![submit flow](https://github.com/alisharifi2000/CS-SBU-MachineLearning-BSc-2022/blob/main/assets/images/mermaid-diagram-20220220115738.png)
+
+
 ## Instruction:
 
-1. fork the course repository in github with this [url](https://github.com/alisharifi2000/CS-SBU-MachineLearning-BSc-2022)
-![fork_repository](https://github.com/alisharifi2000/CS-SBU-MachineLearning-BSc-2022/blob/main/assets/images/fork_repository.png)
+1. fork the course repository in github with this [url](https://github.com/alisharifi2000/CS-SBU-DataMining-MSc-2022)
+![fork_repository](https://github.com/alisharifi2000/CS-SBU-DataMining-MSc-2022/blob/main/assets/images/fork_repository.png)
 
 3. make a folder in submits folder with your student-id name for example CS-SBU-MachineLearning-BSc-2022/submits/95222046
 
 you can upload this folder or make it in github.
-![create folder](https://github.com/alisharifi2000/CS-SBU-MachineLearning-BSc-2022/blob/main/assets/images/create_folder.png)
+![create folder](https://github.com/alisharifi2000/CS-SBU-DataMining-MSc-2022/blob/main/assets/images/create_folder.png)
+![make folder](https://github.com/alisharifi2000/CS-SBU-DataMining-MSc-2022/blob/main/assets/images/make_folder.png)
 
 5. make branch with your student-id name 
-6. pull request for merging your branch to main branch.
+![create branch](https://github.com/alisharifi2000/CS-SBU-DataMining-MSc-2022/blob/main/assets/images/create_branch.png)
 
+7. pull request for merging your branch to main branch.
+![pull request](https://github.com/alisharifi2000/CS-SBU-DataMining-MSc-2022/blob/main/assets/images/pull_request.png)
 
 ## Attention:
 1. all request is merged , one day after each project deadline.
