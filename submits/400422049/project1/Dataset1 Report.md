@@ -164,22 +164,143 @@ Bronx              954
 Staten Island      168
 Name: neighbourhood_group, dtype: int64
 ```
-
+![](https://github.com/rz-pb/CS-SBU-eDataMining-MSc-2022/blob/400422049/submits/400422049/project1/assets/neighbourhood_group.png)
 ## Price Statistical Measures
+```
+NYC['price'].describe()
+```
+```
+count    44090.000000
+mean       138.792334
+std        107.936585
+min          0.000000
+25%         69.000000
+50%        105.000000
+75%        175.000000
+max        860.000000
+Name: price, dtype: float64
+```
 
+```
+NYC['price'].mode()[0]
+```
+
+```
+150
+```
+```
+NYC['price'].median()
+```
+```
+105.0
+```
+![](https://github.com/rz-pb/CS-SBU-eDataMining-MSc-2022/blob/400422049/submits/400422049/project1/assets/price_histplot.png)
 ## Number of Ads for Each Unique Host
 
 Number of unique `host_id`s in dataset:
+```
+NYC['host_id'].nunique()
+```
+```
+34807
+```
 
+```
+NYC['host_id'].value_counts()
+```
+
+```
+137358866    103
+16098958      96
+12243051      96
+61391963      91
+22541573      87
+            ... 
+5346314        1
+6707228        1
+69944410       1
+33816358       1
+68119814       1
+Name: host_id, Length: 34807, dtype: int64
+```
+
+```
+NYC['host_id'].value_counts().describe()
+```
+
+```
+count    34807.000000
+mean         1.266699
+std          1.740087
+min          1.000000
+25%          1.000000
+50%          1.000000
+75%          1.000000
+max        103.000000
+Name: host_id, dtype: float64
+```
+```
+NYC['host_id'].value_counts().median()
+```
+
+```
+1.0
+```
+
+```
+NYC['host_id'].value_counts().mode()[0]
+```
+
+```
+1
+```
 As you might already noticed, number of ads for each unique host has an **extremely skewed distribution** towards 1 ad per host as the _mean_, _median_ and _mode_ are indicating clearly. A distribution is said to be skewed when the data points cluster more toward one side of the scale than the other. 
 
 Therefore any distribution plot would be extremely disproportionate and gives little insight visually.
 
 despite I tried to plot with a log scale y-axis to keep it more descriptive.
 
+![](https://github.com/rz-pb/CS-SBU-eDataMining-MSc-2022/blob/400422049/submits/400422049/project1/assets/Number_of_Listings_for_Each_Host_Frequency_histplot.png)
+
 ## Number of Properties for Each Unique Host
 If we are going to find the number of properties (not listings!) for each unique host, it requires to know what differentiates properties with eachother. I couldn't come to a conclusion that spatial coordinates can give us this criteria.
+```
+NYC[['host_id', 'latitude', 'longitude', 'room_type']].loc[NYC['latitude']==40.70738].head(90)
+```
+![](https://github.com/rz-pb/CS-SBU-eDataMining-MSc-2022/blob/400422049/submits/400422049/project1/assets/Screenshot%202022-04-07%20221557.png)
 
 ## Most Reviewed Listings
+```
+NYC['number_of_reviews'].nlargest(10)
+```
 
+```
+129     155
+152     155
+1066    155
+1949    155
+2418    155
+2572    155
+4280    155
+7040    155
+7578    155
+9156    155
+Name: number_of_reviews, dtype: int64
+```
+
+```
+sns.displot(data = NYC , x = 'number_of_reviews')
+```
+
+![](https://github.com/rz-pb/CS-SBU-eDataMining-MSc-2022/blob/400422049/submits/400422049/project1/assets/number_of_reviews_displot.png)
 ## Hosts with the Most Total Reviewed Listings
+```
+top_reviewed_hosts = pd.DataFrame(NYC.groupby('host_id')['number_of_reviews'].sum().nlargest(10))
+top_reviewed_hosts.reset_index(inplace = True)
+top_reviewed_hosts['host_id']  = top_reviewed_hosts['host_id'].astype('category')
+```
+![](https://github.com/rz-pb/CS-SBU-eDataMining-MSc-2022/blob/400422049/submits/400422049/project1/assets/Screenshot%202022-04-07%20222130.png)
+```
+top_reviewed_hosts.plot.bar(x='host_id',y='number_of_reviews', rot=0)
+```
+![](https://github.com/rz-pb/CS-SBU-eDataMining-MSc-2022/blob/400422049/submits/400422049/project1/assets/top_reviewed_hosts_plot.png)
