@@ -1,0 +1,167 @@
+1) Overview
+
+Bob has started his own mobile company. He wants to give tough fight to big companies like Apple,Samsung etc.
+He does not know how to estimate price of mobiles his company creates. In this competitive mobile phone market you cannot simply assume things. To solve this problem he collects sales data of mobile phones of various companies.
+Bob wants to find out some relation between features of a mobile phone(eg:- RAM,Internal Memory etc) and its selling price. But he is not so good at Machine Learning. So he needs your help to solve this problem.
+In this problem you do not have to predict actual price but a price range indicating how high the price is
+
+Steps:
+
+1. Look at data and data cleaning
+2. Data visualization
+3. Preprocessing
+4. Model
+5. Fauture selection: Forward, Backward, PCA
+6. Fauture engineerig: Binning, One-hot-encoding, Transform, New features
+7. Crossvalidation, Bootstrapping
+8. Descision tree and Pruning
+9. Random forest, Bagging, Boosting, KNN
+9. Prediction
+-----------------------------------------------------------------------------------------------------------------------------------
+2) Method
+
+1. In "Look at data and data cleaning" every thing is ok
+
+2. In preprocessing we split data 80-20 and use standard scaler
+
+3. In "Model", We use LogisticRegression create LR function which it's input is "X_train, y_train, X_test, y_test, i"(i is the name of fautures) and return accuracy_score and predicted y and AUC score.
+
+4. In Fauture selection we use 1.All features 2.Forward selection(AUC score) 3.Backward selection(AUC score) 4.PCA (with number of features in forward selection)
+
+5. In Fauture engineerig we did Binning on battery_power, did One-hot-encoding on (blue, dualsim, fourg), did Transform on sc_w and fc,
+create New features (sc_area, px_area) and we compare all of them with Logistic Regression
+
+6.In Descision tree and Pruning we use 1.criterion='gini', ccp_alpha=0, max_leaf_nodes=8, min_samples_split=4, max_depth=11
+                                       2.criterion='entropy', ccp_alpha=0, max_depth=11
+                                       3.criterion='entropy', ccp_alpha=0, max_depth=8, max_leaf_nodes=10, min_samples_leaf=30
+
+7.In Random forest, Bagging, Boosting, KNN we use:1.RandomForestClassifier
+                                                  2.BaggingClassifier
+                                                  3.GradientBoostingClassifier(ccp_alpha=0, learning_rate=0.08)
+                                                  4.KNeighborsClassifier(n_neighbors=10)
+
+8.In Prediction we use backward columns and Logisticregression
+
+-----------------------------------------------------------------------------------------------------------------------------------
+3)Explanations
+
+Crossvalidation
+
+    Cross-Validation is a statistical method of evaluating and comparing learning algorithms by dividing data into two segments: one used to learn or train a model and the other used to validate the model.
+
+Bootstrapping
+
+    Bootstrapping is a statistical procedure that resamples a single dataset to create many simulated samples.
+
+Why Crossvalidation
+
+    It is used to protect against overfitting in a predictive model, particularly in a case where the amount of data may be limited.
+    Advantages of cross-validation: More accurate estimate of out-of-sample accuracy. More “efficient” use of data as every observation is used for both training and testing.
+
+Why Bootstrapping
+
+    It helps in avoiding overfitting and improves the stability of machine learning algorithms.
+    A great advantage of bootstrap is its simplicity. It is a straightforward way to derive estimates of standard errors and confidence intervals for complex estimators of the distribution, such as percentile points, proportions, odds ratio, and correlation coefficients.
+
+When Bootstrapping, Crossvalidation
+
+    We use Bootsrap when we one to estimate parameteters.
+    We use Crossvalodation for our model's score.
+
+5x2 cross validation
+
+    5x2cv refer to a 5 repetition of a 2-fold. do a 2-fold (50/50 split between train and test), repeat it 4 more times. The 5x2cv was for comparing supervised classification learning algorithms by Dietterich as a way of obtaining not only a good estimate of the generalisation error but also a good estimate of the variance of that error (in order to perform statistical tests). code on kaggle(https://www.kaggle.com/code/ogrellier/parameter-tuning-5-x-2-fold-cv-statistical-test/notebook)
+
+-----------------------------------------------------------------------
+Decision-tree
+
+CART, ID3
+
+    CART is a classification algorithm for building a decision tree based on Gini's impurity index as splitting criterion.
+    ID3 is a classification algorithm for building a decision tree based on Information Gain as splitting criterion.
+
+Another difference:
+The CART algorithm produces only binary Trees: non-leaf nodes always have two children.
+ID3 can produce Decision Trees with nodes having more than two children.
+
+-----------------------------------------------------------------------
+Pruning
+
+    Pruning is a data compression technique in machine learning and search algorithms that reduces the size of decision trees by removing sections of the tree that are non-critical and redundant to classify instances.
+    We use it because it can prevent overfitting
+        max_leaf_nodes. Reduce the number of leaf nodes.
+        min_samples_leaf. Restrict the size of sample leaf. Minimum sample size in terminal nodes can be fixed to 30, 100, 300 or 5% of total.
+        max_depth. Reduce the depth of the tree to build a generalized tree.
+
+
+------------------------------------------------------------------------
+Elbow method
+
+    We are looking for a trade of between bias and variance
+
+
+------------------------------------------------------------------------
+Matthews Correlation Coefficient(MCC)
+
+    The MCC is in essence a correlation coefficient value between -1 and +1. A coefficient of +1 represents a perfect prediction, 0 an average random prediction and -1 an inverse prediction. The statistic is also known as the phi coefficient.
+    MCC = (TPTN – FPFN) / √(TP+FP)(TP+FN)(TN+FP)(TN+FN)
+
+-----------------------------------------------------------------------------------------------------------------------------------
+4) Results
+
+Accuracy of sklearn's Logistic Regression Classifier with all_features: 0.985, acc_auc: 0.9849363561045417
+
+result forward selection=> best columns: ['battery_power', 'blue', 'clock_speed', 'n_cores', 'px_width', 'ram']
+Accuracy of sklearn's Logistic Regression Classifier with forward selection: 0.9725, acc_auc: 0.9725465090005272
+
+result backward selection=> best columns: ['wifi', 'battery_power', 'blue', 'clock_speed', 'dual_sim', 'fc', 'four_g', 'int_memory', 'm_dep', 'mobile_wt',   'n_cores', 'pc', 'px_height', 'px_width', 'ram', 'sc_h', 'sc_w', 'talk_time', 'three_g']
+Accuracy of sklearn's Logistic Regression Classifier with backward selection: 0.9875, acc_auc: 0.986957394993849
+
+Accuracy of sklearn's Logistic Regression Classifier with pca 6: 0.685, acc_auc: 0.6859481308528533
+
+Accuracy of sklearn's Logistic Regression Classifier with bininng: 0.9825, acc_auc: 0.9825889382641662
+Accuracy of sklearn's Logistic Regression Classifier with ohe hot encoding: 0.985, acc_auc: 0.9849363561045417
+Accuracy of sklearn's Logistic Regression Classifier with log transform: 0.9825, acc_auc: 0.9822625593130979
+Accuracy of sklearn's Logistic Regression Classifier with area: 0.985, acc_auc: 0.9849363561045417
+Accuracy of sklearn's Logistic Regression Classifier with all: 0.9825, acc_auc: 0.9825889382641662
+
+DecisionTreeClassifier(criterion='gini', ccp_alpha=0, max_leaf_nodes=8, min_samples_split=4, max_depth=11)
+DecisionTreeRegressor: test 0.961875
+DecisionTreeRegressor R^2: test 0.7388968391453893
+
+DecisionTreeClassifier(criterion='entropy', ccp_alpha=0, max_depth=11)
+DecisionTreeRegressor: test 1.0
+DecisionTreeRegressor R^2: test 0.7489392684090281
+
+
+DecisionTreeClassifier(criterion='entropy', ccp_alpha=0, max_depth=8, max_leaf_nodes=10, min_samples_leaf=30)
+DecisionTreeRegressor: test 0.95625
+DecisionTreeRegressor R^2: test 0.6987271220908338
+
+RandomForestClassifier
+RandomForestClassifier: test 1.0
+RandomForestClassifier R^2: test 0.7589816976726671
+
+BaggingClassifier
+BaggingClassifier: test 0.995
+BaggingClassifier R^2: test 0.8694484195726946
+
+GradientBoostingClassifier(ccp_alpha=0, learning_rate=0.08)
+GradientBoostingClassifier: test 0.996875
+GradientBoostingClassifier R^2: test 0.8694484195726946
+
+KNeighborsClassifier(n_neighbors=10)
+KNeighborsClassifier: test 0.874375
+KNeighborsClassifier R^2: test 0.3171148100725567
+
+
+
+
+
+
+
+
+
+
+
+
