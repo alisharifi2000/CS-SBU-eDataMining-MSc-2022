@@ -1,0 +1,58 @@
+1) Overview
+
+Since 2008, guests and hosts have used Airbnb to expand on traveling possibilities and present more unique, personalized way of experiencing the world. This dataset describes the listing activity and metrics in NYC, NY for 2019.
+Questions:
+What can we learn about different hosts and areas?
+What can we learn from predictions? (ex: locations, prices, reviews, etc)
+Which hosts are the busiest and why?
+Is there any noticeable difference of traffic among different areas and what could be the reason for it?
+Steps:
+1.Import libraries
+2.Load data
+3.Look at data and data cleaning
+4.Data visualization
+5.Hypothesis tests
+6.Model
+-----------------------------------------------------------------------------------------------------------------------------------
+2) Data, Method
+
+Data: This data file includes all needed information to find out more about hosts, geographical availability, necessary metrics to make predictions and draw conclusions. http://insideairbnb.com/
+Method: 
+1. In "Look at data and data cleaning"
+1_1. We fill null items.
+1_2. Detect outliers with two method, 1.Z_score 2.IQR_method, We use IQR_method as this method detect more outliesrs.
+2. In "Hypothesis test", We use Ttest, Anova, Chi, Normality tests, Correlation tests and Variance test.
+3. In "Model", We use Regression.
+3_1. We use LabelEncoder to lable our categorical data 
+3_2. Split data
+3_3. Scale data with MinMaxScaler
+3_4. Train model
+-----------------------------------------------------------------------------------------------------------------------------------
+3) Results
+
+1. Null items: name: 0.03%, host_name: 0.04, last_review: 20.5%, reviews_per_month: 20.5%
+2. Outliers
+2_1. Z_score: price: 1847, minimum_nights: 5662, calculated_host_listings_count: 4058, reviews_per_month: 960
+2_2. IQR_method: price: 1847, minimum_nights: 5662, calculated_host_listings_count: 4058, reviews_per_month: 960
+3. Hypothesis test
+3_1. Average price 150 $ => reject null hypothesis
+3_2. Gender not effects on price => reject null hypothesis
+3_3. Neighbourhood_group on price => accept null hypothesis
+3_4. Relation room type as categorical feature and neighbourhood_group as categorical feature => Reject H0,There is a relationship between 2 categorical variables
+3_5. Normality Test "price_ln" => Probably not Gaussian
+3_6. Normality Test "price_log10" => Probably not Gaussian
+3_7. Correlation Test "price_log10, number_of_reviews" => Probably dependent
+3_8. Correlation Test "price_log10, latitude" => Probably dependent
+3_9. Variance Test "price_log10, reviews_per_month, availability_365" => Probably different distributions
+4. Model
+Train
+lm.coef=> [[ 0.03513606  0.02657258  0.10994769 -0.40308913 -0.37912478 -0.60976881 0.05681079  0.03622646]]
+MAE Model: 0.08904108835841296
+MSE Model: 0.013201101907502616
+RMSE Model: 0.11489604826756496
+R2 Model: 0.5232017810871465
+Test
+MAE: 0.09070211677142104
+MSE: 0.013751593055743772
+RMSE: 0.11726718661136103
+R2: 0.5029025063608455
