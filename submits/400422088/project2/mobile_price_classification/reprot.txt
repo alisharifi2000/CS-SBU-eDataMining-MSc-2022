@@ -97,7 +97,7 @@ Pruning
 ------------------------------------------------------------------------
 Elbow method
 
-    We are looking for a trade of between bias and variance
+    We are looking for a trade of between bias and variance in this graph it looks to be 3 because after that we might have overfitting.
 
 
 ------------------------------------------------------------------------
