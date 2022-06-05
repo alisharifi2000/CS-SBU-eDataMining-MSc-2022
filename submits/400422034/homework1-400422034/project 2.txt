@@ -1,0 +1,11 @@
+
+tahsin ilkhas zadeh
+student number. 400422034
+
+project number 2 
+The dataset name : apartment-rental-offers-in-germany ,immo_data.csv
+
+
+my gist link on githubgist:
+
+https://gist.github.com/t1360/003beeb09503a772e0f6969e96fa7f4e

@@ -1,0 +1,40 @@
+1) Overview
+
+Bob has started his own mobile company. He wants to give tough fight to big companies like Apple,Samsung etc.
+He does not know how to estimate price of mobiles his company creates. In this competitive mobile phone market you cannot simply assume things. To solve this problem he collects sales data of mobile phones of various companies.
+Bob wants to find out some relation between features of a mobile phone(eg:- RAM,Internal Memory etc) and its selling price. But he is not so good at Machine Learning. So he needs your help to solve this problem.
+In this problem you do not have to predict actual price but a price range indicating how high the price is
+Steps:
+1. Import libraries
+2. Load data
+3. Look at data and data cleaning
+4. Data visualization
+5. Model
+6. Fauture selection
+7. Predict
+-----------------------------------------------------------------------------------------------------------------------------------
+2) Method
+
+1. In "Look at data and data cleaning" every thing is ok, We create some new columns "sc_area, px_area, full_option, 3_or_4g"
+3. In "Model", We use LogisticRegression create LR function which it's input is "X_train, y_train, X_test, y_test, i"(i is the PCA or name of fautures) and return accuracy_score and predicted y.
+3_1. Split our data "test_size=0.2"
+3_2. Scale with StandardScaler
+3_3. Apply LR with all feautres
+3_4. Apply LR ram & price
+3_5. Use Forward, Backward selection
+3_6. Use PCA
+-----------------------------------------------------------------------------------------------------------------------------------
+3) Results
+
+1. Model
+Accuracy of sklearn's Logistic Regression Classifier with all_features: 0.96
+Accuracy of sklearn's Logistic Regression Classifier with ram: 0.7725
+forward selection with sm.OLS => ['ram', 'battery_power', 'px_area', 'px_width', 'mobile_wt', 'px_height', 'int_memory'] 0.975
+backward selection with sm.OLS => ['battery_power', 'int_memory', 'mobile_wt', 'px_height', 'px_width', 'ram'] 0.9725
+forward           => (['battery_power', 'blue', 'px_height', 'ram', 'sc_h', 'px_area'], 0.925)
+backward          => (['3_or_4g', 'battery_power', 'blue', 'dual_sim', 'int_memory'], 0.9675)
+PCA 2: 0.305, 3: 0.2925, 4: 0.31, 5: 0.33, 6: 0.3675, 7: 0.43, 8: 0.43, 9: 0.4375, 10: 0.4425, 11: 0.52, 12: 0.5125, 13: 0.53, 14: 0.5625, 15: 0.95
+
+
+
+
