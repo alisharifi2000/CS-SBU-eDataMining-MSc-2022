@@ -1,0 +1,12 @@
+kind: ExternalService
+name: new
+spec:
+  image_pull_policy: Always
+  port: 80
+  source:
+    context: .
+    media_path: ''
+    project_type: django
+    python_version: '3.6'
+    static_path: static
+    wsgi: datamining.wsgi
