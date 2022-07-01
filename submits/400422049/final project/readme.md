@@ -37,7 +37,7 @@ http://fandogh-service-rzpb.fandogh.cloud/
 http://fandogh-service-rzpb.fandogh.cloud/swagger
 
 
-**endpoints to check services with Postman**:
+**Endpoints to check services with Postman**:
 
 http://fandogh-service-rzpb.fandogh.cloud/service1
 
