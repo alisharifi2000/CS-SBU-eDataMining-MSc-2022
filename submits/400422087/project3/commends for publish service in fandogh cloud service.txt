@@ -1,0 +1,4 @@
+fandogh login
+fandogh image init --name=fandoghi_service
+fandogh image publish --version 0.1
+fandogh service apply -f fandogh.yml
