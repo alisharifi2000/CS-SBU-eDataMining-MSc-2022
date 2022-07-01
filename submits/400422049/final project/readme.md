@@ -1,6 +1,7 @@
 Things that I've done:
 
-Service1:
+
+**Service1**:
 
 1. Main Task: Interpolation for Gregorian and Jalali Datetimes      (Done)
 2. Timeframes: Minutely, Hourly, Daily, Monthly                     (All Done)
@@ -12,7 +13,8 @@ Service1:
 input template for service1 (json):
 [service1 input template](input_outputs/service1/miladi-input-sample.json)
 
-Service2:
+
+**Service2**:
 
 1. Main Task: Interpolation for Gregorian and Jalali Datetimes      (Done)
 2. Timeframes: Minutely, Hourly, Daily, Monthly                     (All Done)
@@ -24,13 +26,18 @@ Service2:
 input template for service2 (json):
 [service2 input template](input_outputs/service2/input-sample.json)
 
-Base URL:
+
+**Base URL**:
+
 http://fandogh-service-rzpb.fandogh.cloud/
 
-Swagger:
+
+**Swagger**:
+
 http://fandogh-service-rzpb.fandogh.cloud/swagger
 
-endpoints to check services with Postman:
+
+**endpoints to check services with Postman**:
 
 http://fandogh-service-rzpb.fandogh.cloud/service1
 
