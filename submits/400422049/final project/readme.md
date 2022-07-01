@@ -9,6 +9,8 @@ Service1:
 5. Dockerization                                                    (Done)
 6. Adding Swagger to the project                                    (Done)
 
+input template for service1 (json):
+/input_outputs/service1/miladi-input-sample.json
 
 Service2:
 
