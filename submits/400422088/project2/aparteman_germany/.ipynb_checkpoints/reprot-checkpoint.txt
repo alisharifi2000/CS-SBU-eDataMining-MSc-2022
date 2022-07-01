@@ -1,0 +1,55 @@
+1) Overview
+
+The data was scraped from Immoscout24, the biggest real estate platform in Germany. Immoscout24 has listings for both rental properties and homes for sale, however, the data only contains offers for rental properties.
+At a given time, all available offers were scraped from the site and saved. This process was repeated three times, so the data set contains offers from the dates 2018-09-22, 2019-05-10 and 2019-10-08.
+The data set contains most of the important properties, such as living area size, the rent, both base rent as well as total rent (if applicable), the location (street and house number, if available, ZIP code and state), type of energy etc. It also has two variables containing longer free text descriptions: description with a text describing the offer and facilities describing all available facilities, newest renovation etc. The date column was added to give the time of scraping.
+
+Steps:
+1. cleansing
+2. feature engineering
+3. preprocessing
+4. linear regression from scratch MSE, ASE, ESE
+5. linear regression sklearn, lasso, ridge, decision tree
+-----------------------------------------------------------------------------------------------------------------------------------
+2) Method
+
+1. In loading data use 3 columns ['serviceCharge', 'heatingType', 'telekomUploadSpeed', 'totalRent'] as features and totalRent as target.
+2. In null items we use mean and mode
+2. In Outliers we use iqr method.
+3. In Fautures engineering, We visualize categorical fautures and do some feature engineering and find serviceCharge^2 is better.
+4. In preprocessing, we scale data with standard scaler and one hot encoding
+5. In scratch, create a class for linear regression and three different types of cost function (MSE, ASE, ESE).
+6- In pakages, we use sklearn for linear regression, lasso(alpha=0.1), ridge(alpha=1), DecisionTreeRegressor
+-----------------------------------------------------------------------------------------------------------------------------------
+3) Results
+
+1.data shape = (268850, 4) 8.2 MB
+
+2.null(%) :
+serviceCharge  => 2.5698344801934163
+heatingType  => 16.68439650362656
+telekomUploadSpeed  => 12.407662265203644
+totalRent  => 15.070485400781106
+
+3.outliers:
+serviceCharge: 10271
+totalRent: 20025
+
+4.scratch:
+linear reggression from scrach (MSE) R^2: test 0.31741600819420923
+
+5.pakages:
+linear reggression score train: 0.3219277952004943
+linear reggression R^2: test 0.3204800145981086
+ridge reggression score train: 0.32193785125603647
+ridge reggression R^2: test 0.3204710579582756
+lasso reggression score train: 0.2778991832069151
+lasso reggression R^2: test 0.2767668552844015
+lasso : array([ 0.43656238,  0.  , -0.  , -0.  ,  0.  , 0.   ,  0.  ,  0.])
+As you see service charge is important
+linear reggression serviceCharge score train: 0.2875108971588498
+linear reggression serviceCharge R^2: test 0.2876677403752005
+DecisionTreeRegressor: train 0.44076484387116166
+DecisionTreeRegressor R^2: test 0.35362303850291266
+
+

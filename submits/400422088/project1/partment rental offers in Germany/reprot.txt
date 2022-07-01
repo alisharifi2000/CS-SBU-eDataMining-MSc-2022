@@ -1,0 +1,21 @@
+1) Overview
+
+The data was scraped from Immoscout24, the biggest real estate platform in Germany. Immoscout24 has listings for both rental properties and homes for sale, however, the data only contains offers for rental properties.
+At a given time, all available offers were scraped from the site and saved. This process was repeated three times, so the data set contains offers from the dates 2018-09-22, 2019-05-10 and 2019-10-08.
+The data set contains most of the important properties, such as living area size, the rent, both base rent as well as total rent (if applicable), the location (street and house number, if available, ZIP code and state), type of energy etc. It also has two variables containing longer free text descriptions: description with a text describing the offer and facilities describing all available facilities, newest renovation etc. The date column was added to give the time of scraping.
+Steps:
+1. Import libraries
+2. Load data and Look at data
+2_1. Null items
+2_2. Duplicate
+2_3. Outliers
+4. Fautures
+-----------------------------------------------------------------------------------------------------------------------------------
+2) Method
+
+1. In loading data and null items, We use Pyspark and pandas and comapre them.
+2. In Outliers first we use IQR_method and after that we use Z_score method.
+3. In Fautures, We visualize categorical fautures and do some feature engineering
+
+-----------------------------------------------------------------------------------------------------------------------------------
+3) Results
