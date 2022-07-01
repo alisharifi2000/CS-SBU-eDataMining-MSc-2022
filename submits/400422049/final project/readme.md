@@ -10,7 +10,7 @@ Service1:
 6. Adding Swagger to the project                                    (Done)
 
 input template for service1 (json):
-[service1 input template](/input_outputs/service1/miladi-input-sample.json)
+[service1 input template](input_outputs/service1/miladi-input-sample.json)
 
 Service2:
 
