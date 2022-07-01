@@ -1,308 +1,215 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-      "description": "This is a sample timeseries interpolation server. You can find out more about it at [my github repository](https://github.com/rz-pb).",
-      "version": "1.0.0",
-      "title": "Data Mining Final Services",
-      "termsOfService": "https://github.com/rz-pb",
-      "contact": {
-        "email": "reza.pourbahreini@gmail.com"
-      },
-      "license": {
-        "name": "Apache 2.0",
-        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-      }
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a sample timeseries interpolation server. You can find out more about it at [my github repository](https://github.com/rz-pb).",
+    "version": "1.0.0",
+    "title": "Data Mining Final Services",
+    "termsOfService": "https://github.com/rz-pb",
+    "contact": {
+      "email": "reza.pourbahreini@gmail.com"
     },
-    "tags": [
-      {
-        "name": "service1",
-        "description": "Interpolation for Gregorian or Jalali Timeseries"
-      },
-      {
-        "name": "service2",
-        "description": "Interpolation for Gregorian Timeseries. Response in Jalali Format"
-      }
-    ],
-    "servers": [
-      {
-        "url": "/"
-      }
-    ],
-    "paths": {
-      "/service1": {
-        "post": {
-          "tags": [
-            "service1"
-          ],
-          "summary": "Interpolation for Gregorian or Jalali Timeseries",
-          "description": "there needs to be a concise description",
-          "consumes": [
-            "application/json"
-          ],
-          "produces": [
-            "text/plain"
-          ],
-          "parameters": [
-            {
-              "in": "body",
-              "name": "input1",
-              "description": "Records",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/input1"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Successful Operation"
-            },
-            "405": {
-              "description": "Invalid input"
-            },
-            "500": {
-              "description": "Internal Error"
-            }
-          }
-        },
-        "get": {
-          "tags": [
-            "service1"
-          ],
-          "summary": "Interpolation for Gregorian or Jalali Timeseries",
-          "description": "there needs to be a concise description",
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "in": "body",
-              "name": "input1",
-              "description": "Records",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/input1"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "successful operation"
-            },
-            "400": {
-              "description": "Invalid status value"
-            }
-          }
-        }
-      },
-      "/service2": {
-        "post": {
-          "tags": [
-            "service2"
-          ],
-          "summary": "Interpolation for Gregorian Timeseries. Response in Jalali Format",
-          "description": "there needs to be a concise description",
-          "consumes": [
-            "application/json"
-          ],
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "in": "body",
-              "name": "body",
-              "description": "Records",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/input2"
-              }
-            }
-          ],
-          "responses": {
-            "405": {
-              "description": "Invalid input"
-            }
-          }
-        },
-        "get": {
-          "tags": [
-            "service2"
-          ],
-          "summary": "Interpolation for Gregorian Timeseries. Response in Jalali Format",
-          "description": "there needs to be a concise description",
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "in": "body",
-              "name": "body",
-              "description": "Records",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/input2"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "successful operation"
-            },
-            "400": {
-              "description": "Invalid status value"
-            }
-          }
-        }
-      }
-    },
-    "definitions": {
-      "input1": {
-        "type": "object",
-        "properties": {
-          "time": {
-            "type": "object",
-            "properties": {
-              "0": {
-                "type": "string",
-                "example": "2022-06-14-19:24:12"
-              },
-              "1": {
-                "type": "string",
-                "example": "2022-06-20-19:27:10"
-              },
-              "2": {
-                "type": "string",
-                "example": "2022-06-21-20:32:12"
-              },
-              "3": {
-                "type": "string",
-                "example": "2022-06-23-18:37:12"
-              },
-              "4": {
-                "type": "string",
-                "example": "2022-07-05-14:43:32"
-              }
-            }
-          },
-          "vol": {
-            "type": "object",
-            "properties": {
-              "0": {
-                "type": "number",
-                "example": 20
-              },
-              "1": {
-                "type": "number",
-                "example": 40
-              },
-              "2": {
-                "type": "number",
-                "example": 100
-              },
-              "3": {
-                "type": "number",
-                "example": 94
-              },
-              "4": {
-                "type": "number",
-                "example": 43
-              }
-            }
-          },
-          "config": {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "example": "miladi"
-              },
-              "time": {
-                "type": "string",
-                "example": "minutely"
-              },
-              "interpolation": {
-                "type": "string",
-                "example": "spline"
-              }
-            }
-          }
-        }
-      },
-      "input2": {
-        "type": "object",
-        "properties": {
-          "time": {
-            "type": "object",
-            "properties": {
-              "0": {
-                "type": "string",
-                "example": "2022-06-14-19:24:12"
-              },
-              "1": {
-                "type": "string",
-                "example": "2022-06-20-19:27:10"
-              },
-              "2": {
-                "type": "string",
-                "example": "2022-06-21-20:32:12"
-              },
-              "3": {
-                "type": "string",
-                "example": "2022-06-23-18:37:12"
-              },
-              "4": {
-                "type": "string",
-                "example": "2022-07-05-14:43:32"
-              }
-            }
-          },
-          "vol": {
-            "type": "object",
-            "properties": {
-              "0": {
-                "type": "number",
-                "example": 20
-              },
-              "1": {
-                "type": "number",
-                "example": 40
-              },
-              "2": {
-                "type": "number",
-                "example": 100
-              },
-              "3": {
-                "type": "number",
-                "example": 94
-              },
-              "4": {
-                "type": "number",
-                "example": 43
-              }
-            }
-          },
-          "config": {
-            "type": "object",
-            "properties": {
-              "time": {
-                "type": "string",
-                "example": "minutely"
-              },
-              "interpolation": {
-                "type": "string",
-                "example": "spline"
-              },
-              "skip_holiday": {
-                "type": "boolean"
-              }
-            }
-          }
-        }
-      }
-    },
-    "externalDocs": {
-      "description": "Find out more about Swagger",
-      "url": "https://github.com/rz-pb"
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
+  },
+  "tags": [
+    {
+      "name": "service1",
+      "description": "Interpolation for Gregorian or Jalali Timeseries"
+    },
+    {
+      "name": "service2",
+      "description": "Interpolation for Gregorian Timeseries. Response in Jalali Format"
+    }
+  ],
+  "paths": {
+    "/service1": {
+      "post": {
+        "tags": [
+          "service1"
+        ],
+        "summary": "Interpolation for Gregorian or Jalali Timeseries",
+        "description": "Service1 acts as a resampler first and finds the gaps based on chosen timeframe. Then with the help of built-in interpolators the missing records are handeled and result returns. It handles both gregorian and jalali datetime records and it's capable of both linear and spline interpolation techniques.",
+        "operationId": "service1post",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "input1",
+            "description": "Time-date Records : 'Y-M-D-h:m:s' | config['type'] : 'shamsi' / 'miladi' | config['interpolation'] : 'linear' / 'spline'",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/input1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Operation"
+          },
+          "405": {
+            "description": "Method Not Allowed"
+          },
+          "500": {
+            "description": "Internal Error"
+          }
+        }
+      }
+    },
+    "/service2": {
+      "post": {
+        "tags": [
+          "service2"
+        ],
+        "summary": "Interpolation for Gregorian Timeseries. Response in Jalali Format",
+        "description": "In fact Service2 is Service1 with a twist! Service2 gets only gregorian datetimes and must return the results in jalali format. So the logic is the same but there's a few steps to handle this trasformation after doing the math.",
+        "operationId": "service2",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Time-date Records : 'Y-M-D-h:m:s' | config['interpolation'] : 'linear' / 'spline'",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/input2"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Operation"
+          },
+          "405": {
+            "description": "Method Not Allowed"
+          },
+          "500": {
+            "description": "Internal Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "input1": {
+      "type": "object",
+      "properties": {
+        "data":{
+          "type": "object",
+          "properties":{
+            "time": {
+              "type": "object",
+              "additionalproperties": {
+                "type": "string"
+              },
+              "example": {
+                "0" : "2022-06-14-19:24:12",
+                "1": "2022-06-20-19:27:10",
+                "2": "2022-06-21-20:32:12",
+                "3": "2022-06-23-18:37:12",
+                "4": "2022-07-05-14:43:32"
+              }
+            },
+            "vol": {
+              "type": "object",
+              "additionalproperties": {
+                "type": "string"
+              },
+              "example":{
+                "0": 20,
+                "1": 40,
+                "2": 100,
+                "3": 94,
+                "4": 43
+              }   
+            }
+          }
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "example": "miladi"
+            },
+            "time": {
+              "type": "string",
+              "example": "minutely"
+            },
+            "interpolation": {
+              "type": "string",
+              "example": "spline"
+            }
+          }
+        }
+      }
+    },
+    "input2": {
+      "type": "object",
+      "properties": {
+        "data":{
+          "type:": "object",
+          "properties":{
+            "time": {
+              "type": "object",
+              "additionalproperties": {
+                "type": "string"
+              },
+              "example": {
+                "0" : "2022-06-14-19:24:12",
+                "1": "2022-06-20-19:27:10",
+                "2": "2022-06-21-20:32:12",
+                "3": "2022-06-23-18:37:12",
+                "4": "2022-07-05-14:43:32"
+              }
+            },
+            "vol": {
+              "type": "object",
+              "additionalproperties": {
+                "type": "string"
+              },
+              "example":{
+                "0": 20,
+                "1": 40,
+                "2": 100,
+                "3": 94,
+                "4": 43
+              }
+            }
+          }
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "time": {
+              "type": "string",
+              "example": "minutely"
+            },
+            "interpolation": {
+              "type": "string",
+              "example": "spline"
+            },
+            "skip_holiday": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "https://github.com/rz-pb"
   }
+}
