@@ -21,7 +21,8 @@ Service2:
 5. Dockerization                                                    (Done)
 6. Adding Swagger to the project                                    (Done)
 
-
+input template for service2 (json):
+[service2 input template](input_outputs/service2/input-sample.json)
 
 Base URL:
 http://fandogh-service-rzpb.fandogh.cloud/
