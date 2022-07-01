@@ -16,7 +16,7 @@ input template for service1 (json):
 
 **Service2**:
 
-1. Main Task: Interpolation for Gregorian and Jalali Datetimes      (Done)
+1. Main Task: Interpolation for Gregorian Datetimes and Returning Results in Jalali Datetime     (Done)
 2. Timeframes: Minutely, Hourly, Daily, Monthly                     (All Done)
 3. Different Methods of Interpolation: Linear , Spline              (Both Done)
 4. Deploying as a PaaS on fandogh                                   (Done)
