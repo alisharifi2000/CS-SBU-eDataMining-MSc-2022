@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "4fd7de4d-a956-4617-bdae-175b758d1f77",
+		"name": "DataMining-FinalProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Service1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"time\": {\n            \"0\": \"1401-02-01\",\n            \"1\": \"1401-02-02\",\n            \"2\": \"1401-02-05\"\n\n        },\n        \"vol\": {\n            \"0\": 20,\n            \"1\": 50,\n            \"2\": 80\n        }\n    },\n    \"config\": {\n        \"time\": \"daily\",\n        \"type\": \"shamsi\",\n        \"interpolation\": \"spline\",\n        \"order\":2\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://new-sbu.fandogh.cloud/service1/",
+					"protocol": "https",
+					"host": [
+						"new-sbu",
+						"fandogh",
+						"cloud"
+					],
+					"path": [
+						"service1",
+						""
+					]
+				},
+				"description": "This service resample missing data and interpolate them.\nfor non linear method, order input is necessary.\ninput : {\ninterpolation method : linear, spline, polynomial\ninput type : shamsi, miladi\ninput time : daily, monthly\noutput type : same as input type.\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Service2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"time\": {\n            \"0\": \"2019-02-01\",\n            \"1\": \"2019-02-02\",\n            \"2\": \"2019-02-05\"\n\n        },\n        \"vol\": {\n            \"0\": 20,\n            \"1\": 50,\n            \"2\": 80\n        }\n    },\n    \"config\": {\n        \"time\": \"daily\",\n        \"interpolation\": \"linear\",\n        \"skip_holiday\": false\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://new-sbu.fandogh.cloud/service2/",
+					"protocol": "https",
+					"host": [
+						"new-sbu",
+						"fandogh",
+						"cloud"
+					],
+					"path": [
+						"service2",
+						""
+					]
+				},
+				"description": "This service resample missing data and interpolate them.\nfor non linear method, order input is necessary.\ninput : {\ninterpolation method : linear, spline, polynomial\ninput type : miladi\noutput type : shamsi\ninput time : daily, monthly\nskip-holiday : true/false \n}"
+			},
+			"response": []
+		}
+	]
+}
