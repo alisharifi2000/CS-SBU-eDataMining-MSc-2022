@@ -1,0 +1,393 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "preprocessing api",
+    "description" : "This is a preprocessing-api-service",
+    "termsOfService" : "http://swagger.io/terms/",
+    "contact" : {
+      "email" : "rostamimahdi1997@gmail.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "https://preprocessing-api-service.herokuapp.com/"
+    },
+    "version" : "1.0.0-oas3"
+  },
+  "externalDocs" : {
+    "description" : "Find out more about Swagger",
+    "url" : "http://swagger.io"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/rostamimahdi1997/api/1.0.0"
+  }, {
+    "url" : "http://virtserver.swaggerhub.com/rostamimahdi1997/api/1.0.0"
+  } ],
+  "tags" : [ {
+    "name" : "preprocessing-api-service",
+    "description" : "preprocessing your data",
+    "externalDocs" : {
+      "description" : "Find out more",
+      "url" : "https://github.com/rostamimahdi1997/preprocessing-api-service"
+    }
+  } ],
+  "paths" : {
+    "/interpolate" : {
+      "post" : {
+        "tags" : [ "preprocess" ],
+        "summary" : "interpolate time series data",
+        "operationId" : "interpolate",
+        "requestBody" : {
+          "description" : "data and config",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/interpolate"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Successfully returned",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ApiResponse_interpolate"
+                }
+              }
+            }
+          },
+          "405" : {
+            "description" : "Invalid input"
+          }
+        }
+      }
+    },
+    "/oulier" : {
+      "post" : {
+        "tags" : [ "preprocess" ],
+        "summary" : "detect outlier data",
+        "operationId" : "outlier",
+        "requestBody" : {
+          "description" : "data and config",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/outlier"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Successfully returned",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ApiResponse_outlier"
+                }
+              }
+            }
+          },
+          "405" : {
+            "description" : "Invalid input"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "interpolate" : {
+        "type" : "object",
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/interpolate_data"
+          },
+          "config" : {
+            "$ref" : "#/components/schemas/interpolate_config"
+          }
+        }
+      },
+      "outlier" : {
+        "type" : "object",
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/outlier_data"
+          },
+          "config" : {
+            "$ref" : "#/components/schemas/outlier_config"
+          }
+        }
+      },
+      "ApiResponse_interpolate" : {
+        "type" : "object",
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/ApiResponse_interpolate_data"
+          }
+        }
+      },
+      "ApiResponse_outlier" : {
+        "type" : "object",
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/ApiResponse_outlier_data"
+          }
+        }
+      },
+      "interpolate_data_time" : {
+        "type" : "object",
+        "properties" : {
+          "0" : {
+            "type" : "integer",
+            "description" : "Millisecond",
+            "example" : 1577836800000
+          },
+          "1" : {
+            "type" : "integer",
+            "description" : "Millisecond",
+            "example" : 1577923200000
+          },
+          "2" : {
+            "type" : "integer",
+            "description" : "Millisecond",
+            "example" : 1578096000000
+          }
+        }
+      },
+      "interpolate_data_vol" : {
+        "type" : "object",
+        "properties" : {
+          "0" : {
+            "type" : "integer",
+            "example" : 20
+          },
+          "1" : {
+            "type" : "integer",
+            "example" : 40
+          },
+          "2" : {
+            "type" : "integer",
+            "example" : 100
+          }
+        }
+      },
+      "interpolate_data" : {
+        "required" : [ "time", "vol" ],
+        "type" : "object",
+        "properties" : {
+          "time" : {
+            "$ref" : "#/components/schemas/interpolate_data_time"
+          },
+          "vol" : {
+            "$ref" : "#/components/schemas/interpolate_data_vol"
+          }
+        }
+      },
+      "interpolate_config" : {
+        "required" : [ "interpolation", "time" ],
+        "type" : "object",
+        "properties" : {
+          "time" : {
+            "type" : "string",
+            "description" : "how to interpolation daily or monthly",
+            "example" : "daily"
+          },
+          "interpolation" : {
+            "type" : "string",
+            "description" : "method for interpolation linear",
+            "example" : "linear"
+          }
+        }
+      },
+      "outlier_data_id" : {
+        "properties" : {
+          "0" : {
+            "type" : "integer",
+            "example" : 1
+          },
+          "1" : {
+            "type" : "integer",
+            "example" : 2
+          },
+          "2" : {
+            "type" : "integer",
+            "example" : 3
+          },
+          "3" : {
+            "type" : "integer",
+            "example" : 4
+          }
+        }
+      },
+      "outlier_data_feature" : {
+        "type" : "object",
+        "properties" : {
+          "0" : {
+            "type" : "integer",
+            "example" : 100
+          },
+          "1" : {
+            "type" : "integer",
+            "example" : 20
+          },
+          "2" : {
+            "type" : "integer",
+            "example" : 35
+          },
+          "3" : {
+            "type" : "integer",
+            "example" : 45
+          }
+        }
+      },
+      "outlier_data" : {
+        "required" : [ "feature", "id" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/outlier_data_id"
+          },
+          "feature" : {
+            "$ref" : "#/components/schemas/outlier_data_feature"
+          }
+        }
+      },
+      "outlier_config" : {
+        "required" : [ "columns", "methods" ],
+        "properties" : {
+          "methods" : {
+            "type" : "array",
+            "description" : "method for oulier detection could be one or two methods from iqr and z_score",
+            "example" : [ "iqr", "z_score" ],
+            "items" : { },
+            "enum" : [ "iqr", "z_score" ]
+          },
+          "columns" : {
+            "type" : "array",
+            "description" : "which cols do you want for oulier detection could be list of features",
+            "example" : [ "feature" ],
+            "items" : { },
+            "enum" : [ "feature", "feature1", "feature2" ]
+          }
+        }
+      },
+      "ApiResponse_interpolate_data_time" : {
+        "type" : "object",
+        "properties" : {
+          "0" : {
+            "type" : "integer",
+            "description" : "Millisecond",
+            "example" : 1577836800000
+          },
+          "1" : {
+            "type" : "integer",
+            "description" : "Millisecond",
+            "example" : 1577923200000
+          },
+          "2" : {
+            "type" : "integer",
+            "description" : "Millisecond",
+            "example" : 1578009600000
+          },
+          "3" : {
+            "type" : "integer",
+            "description" : "Millisecond",
+            "example" : 1578096000000
+          }
+        }
+      },
+      "ApiResponse_interpolate_data_vol" : {
+        "type" : "object",
+        "properties" : {
+          "0" : {
+            "type" : "integer",
+            "example" : 20
+          },
+          "1" : {
+            "type" : "integer",
+            "example" : 40
+          },
+          "2" : {
+            "type" : "integer",
+            "example" : 70
+          },
+          "3" : {
+            "type" : "integer",
+            "example" : 100
+          }
+        }
+      },
+      "ApiResponse_interpolate_data" : {
+        "type" : "object",
+        "properties" : {
+          "time" : {
+            "$ref" : "#/components/schemas/ApiResponse_interpolate_data_time"
+          },
+          "vol" : {
+            "$ref" : "#/components/schemas/ApiResponse_interpolate_data_vol"
+          }
+        }
+      },
+      "ApiResponse_outlier_data_method1" : {
+        "type" : "object",
+        "properties" : {
+          "0" : {
+            "type" : "boolean",
+            "example" : false
+          },
+          "1" : {
+            "type" : "boolean",
+            "example" : false
+          },
+          "2" : {
+            "type" : "boolean",
+            "example" : false
+          },
+          "3" : {
+            "type" : "boolean",
+            "example" : false
+          }
+        }
+      },
+      "ApiResponse_outlier_data_method2" : {
+        "type" : "object",
+        "properties" : {
+          "0" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "1" : {
+            "type" : "boolean",
+            "example" : false
+          },
+          "2" : {
+            "type" : "boolean",
+            "example" : false
+          },
+          "3" : {
+            "type" : "boolean",
+            "example" : false
+          }
+        }
+      },
+      "ApiResponse_outlier_data" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/outlier_data_id"
+          },
+          "method1" : {
+            "$ref" : "#/components/schemas/ApiResponse_outlier_data_method1"
+          },
+          "method2" : {
+            "$ref" : "#/components/schemas/ApiResponse_outlier_data_method2"
+          }
+        }
+      }
+    }
+  }
+}
