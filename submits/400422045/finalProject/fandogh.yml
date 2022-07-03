@@ -1,0 +1,8 @@
+kind: ExternalService
+name: api-service
+spec:
+ image: api-service:0.3
+ port: 8080
+ static_path: static
+ resources:
+    memory: 200Mi
