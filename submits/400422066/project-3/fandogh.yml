@@ -1,0 +1,6 @@
+kind: ExternalService
+name: fandogh-service
+spec:
+ image: fandogh_service:0.1
+ port: 80  
+ static_path: static
