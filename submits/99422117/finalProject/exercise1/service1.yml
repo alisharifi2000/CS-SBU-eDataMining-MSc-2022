@@ -1,0 +1,6 @@
+kind: ExternalService
+name: service1
+spec:
+ image: service1:0.1
+ port: 80
+ static_path: static
