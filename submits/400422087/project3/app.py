@@ -77,6 +77,33 @@ def outlier():
 
     return response_message(dict({"data": data}))
 
+@app.route('/service4', methods=['POST'])
+def service4():
+    data = request.files["file"]
+    jsonFile = json.load(data)
+    data = jsonFile['data']
+    file_data = open("data.json", 'w')
+    data = str(data)
+    data = data.replace("\'", "\"")
+    file_data.write(data)
+    file_data.close()
+    f = open("data.json", 'r')
+    config = jsonFile["config"]
+    data = pd.read_json(f)
+    data_new = sampling(data, config["method"])
+    f = open("json_data.json", "w")
+    f.write(data_new.to_json(orient='columns'))
+    f.close()
+    with open('json_data.json', 'r') as json_file:
+        json_object = json.load(json_file)
+    result = json.dumps(json_object, indent=1)
+    with open("output.json", "w") as outfile:
+        outfile.write(json.dumps(json_object, indent=1))
+    with open("output.json", "r") as outfile:
+        result = outfile.read()  
+    result = result.replace('\n', '<br>')
+    return response_message(dict({"data": result})) 
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8081)
