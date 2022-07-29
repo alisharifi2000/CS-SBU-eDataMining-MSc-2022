@@ -1,0 +1,98 @@
+openapi: 3.0.0
+info:
+  title: service1
+  version: 1.0.0
+servers:
+  - url: http://127.0.0.1:8081
+paths:
+  /service1:
+    post:
+      tags:
+        - General
+      summary: http://127.0.0.1:8081/service1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                data:
+                  time:
+                    '0': 1577836800000
+                    '1': 1577923200000
+                    '2': 1578096000000
+                  vol:
+                    '0': 20
+                    '1': 40
+                    '2': 100
+                config:
+                  type: shamsi
+                  time: monthly
+                  interpolation: linear
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /service2:
+    post:
+      tags:
+        - General
+      summary: http://127.0.0.1:8081/service2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                data:
+                  time:
+                    '0': 1328227200000
+                    '1': 1328400000000
+                    '2': 1328486400000
+                  vol:
+                    '0': 20
+                    '1': 40
+                    '2': 100
+                config:
+                  time: daily
+                  interpolation: linear
+                  skip_holiday: false
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /service3:
+    post:
+      tags:
+        - General
+      summary: http://127.0.0.1:8081/service3
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                data:
+                  id:
+                    '0': 1
+                    '1': 2
+                    '2': 3
+                    '3': 4
+                    '4': 5
+                    '5': 6
+                  feature:
+                    '0': 100
+                    '1': 20
+                    '2': 35
+                    '3': 67
+                    '4': 89
+                    '5': 90
+                config:
+                  time_series: false
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
